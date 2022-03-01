@@ -1,0 +1,11 @@
+\section{Solution Method}
+To solve this problem, we implement the Doolittle algorithm. As a part of this algorithm, we set the entries of the main diagonal of the lower matrix to 1. We also set the top row of U equal to A.
+
+To implement the algorithm, we use a triple for loop. We compute entries for the upper and lower matrix column by column, followed up by row by row. The elements of $L$ and $U$ are set according to
+$$U_{ij} = A_{ij} - \sum_{k = 1}^{i - 1}L_{ik}U_{kj};$$
+$$L_{ij} = \frac{A_{ij} - \sum_{k=1}^{j-1}L_{ik}U_{kj}}{U_{jj}}.$$
+We note that this will fail if the first entry of $U$ is zero.
+
+Now that we have implemented a base case, we look to then parallelize. We cannot, however, parallelize the outer for loop since it has dependencies. The two inner loops can be parallelized without issues.
+
+In Version 2, we can improve computation time through using less cache, so more cache is available to perform faster operations. To do this, we see that each of the lower and upper matrix calls in the code can be computed as one matrix given that the boundaries that are set in the for loops hold for each case. This can be viewed in the appendix.

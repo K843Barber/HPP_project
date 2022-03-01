@@ -1,0 +1,156 @@
+\section{Appendix}
+\begin{center}
+    Quadtree code
+\end{center}
+\begin{lstlisting}{language=C}
+    void quadtree_add_particle(quadtree_t** tree, particle_t particle, box_bounds_t box) {
+
+    if(*tree == NULL) {
+        *tree = (quadtree_t*)malloc(sizeof(quadtree_t));
+        (*tree)->mass = particle.mass;
+        (*tree)->centre_of_mass = particle.position;
+        (*tree)->box = box;
+        (*tree)->north_west = NULL;
+        (*tree)->north_east = NULL;
+        (*tree)->south_west = NULL;
+        (*tree)->south_east = NULL;
+    } else if((*tree)->north_east == NULL && (*tree)->north_west == NULL && (*tree)->south_west == NULL && (*tree)->south_east == NULL) {
+
+        particle_t particle_holder = {(*tree)->centre_of_mass, (*tree)->mass, {0.0, 0.0}, 1};
+
+        double xcentre = ((*tree)->box.xlower + (*tree)->box.xupper)/2;
+        double ycentre = ((*tree)->box.ylower + (*tree)->box.yupper)/2;
+
+        if(particle_holder.position.x <= xcentre && particle_holder.position.y < ycentre) {
+            box_bounds_t new_box = {box.xlower, xcentre, box.ylower, ycentre};
+            quadtree_add_particle(&(*tree)->south_west, particle_holder, new_box);
+        } else if(particle_holder.position.x > xcentre && particle_holder.position.y <= ycentre) {
+            box_bounds_t new_box = {xcentre, box.xupper, box.ylower, ycentre};
+            quadtree_add_particle(&(*tree)->south_east, particle_holder, new_box);
+        } else if(particle_holder.position.x < xcentre && particle_holder.position.y >= ycentre) {
+            box_bounds_t new_box = {box.xlower, xcentre, ycentre, box.yupper};
+            quadtree_add_particle(&(*tree)->north_west, particle_holder, new_box);
+        } else if(particle_holder.position.x >= xcentre && particle_holder.position.y > ycentre) {
+            box_bounds_t new_box = {xcentre, box.xupper, ycentre, box.yupper};
+            quadtree_add_particle(&(*tree)->north_east, particle_holder, new_box);
+        }
+
+        if(particle.position.x <= xcentre && particle.position.y < ycentre) {
+            box_bounds_t new_box = {box.xlower, xcentre, box.ylower, ycentre};
+            quadtree_add_particle(&(*tree)->south_west, particle, new_box);
+        } else if(particle.position.x > xcentre && particle.position.y <= ycentre) {
+            box_bounds_t new_box = {xcentre, box.xupper, box.ylower, ycentre};
+            quadtree_add_particle(&(*tree)->south_east, particle, new_box);
+        } else if(particle.position.x < xcentre && particle.position.y >= ycentre) {
+            box_bounds_t new_box = {box.xlower, xcentre, ycentre, box.yupper};
+            quadtree_add_particle(&(*tree)->north_west, particle, new_box);
+        } else if(particle.position.x >= xcentre && particle.position.y > ycentre) {
+            box_bounds_t new_box = {xcentre, box.xupper, ycentre, box.yupper};
+            quadtree_add_particle(&(*tree)->north_east, particle, new_box);
+        }
+
+        (*tree)->centre_of_mass.x = ((*tree)->centre_of_mass.x*(*tree)->mass + particle.position.x*particle.mass)/((*tree)->mass + particle.mass);
+        (*tree)->centre_of_mass.y = ((*tree)->centre_of_mass.y*(*tree)->mass + particle.position.y*particle.mass)/((*tree)->mass + particle.mass);
+        (*tree)->mass += particle.mass;
+
+    } else {
+        (*tree)->centre_of_mass.x = ((*tree)->centre_of_mass.x*(*tree)->mass + particle.position.x*particle.mass)/((*tree)->mass + particle.mass);
+        (*tree)->centre_of_mass.y = ((*tree)->centre_of_mass.y*(*tree)->mass + particle.position.y*particle.mass)/((*tree)->mass + particle.mass);
+        (*tree)->mass += particle.mass;
+
+        double xcentre = ((*tree)->box.xlower + (*tree)->box.xupper)/2;
+        double ycentre = ((*tree)->box.ylower + (*tree)->box.yupper)/2;
+
+        if(particle.position.x <= xcentre && particle.position.y < ycentre) {
+            box_bounds_t new_box = {box.xlower, xcentre, box.ylower, ycentre};
+            quadtree_add_particle(&(*tree)->south_west, particle, new_box);
+        } else if(particle.position.x > xcentre && particle.position.y <= ycentre) {
+            box_bounds_t new_box = {xcentre, box.xupper, box.ylower, ycentre};
+            quadtree_add_particle(&(*tree)->south_east, particle, new_box);
+        } else if(particle.position.x < xcentre && particle.position.y >= ycentre) {
+            box_bounds_t new_box = {box.xlower, xcentre, ycentre, box.yupper};
+            quadtree_add_particle(&(*tree)->north_west, particle, new_box);
+        } else if(particle.position.x >= xcentre && particle.position.y > ycentre) {
+            box_bounds_t new_box = {xcentre, box.xupper, ycentre, box.yupper};
+            quadtree_add_particle(&(*tree)->north_east, particle, new_box);
+        }
+    }
+}
+\end{lstlisting}
+\begin{center}
+    Forces code
+\end{center}
+
+\begin{lstlisting}{language=C}
+    vector_t quad_force(quadtree_t* tree, particle_t particle, double theta_max) {
+    vector_t f;
+    vector_t r;
+    double a;
+
+    if(tree == NULL) {
+        f.x = 0.0;
+        f.y = 0.0;
+    } else if(!vector_in_box(particle.position, tree->box) && (theta_bounds(tree, particle, theta_max)
+              || (tree->north_west == NULL && tree->north_east == NULL && tree->south_west == NULL && tree->south_east == NULL))) {
+        r = r_vector(tree->centre_of_mass, particle.position);
+        a = -(G * particle.mass * tree->mass) / norm3(r);
+        f.x = a * r.x;
+        f.y = a * r.y;
+    } else {
+        vector_t f1 = quad_force(tree->north_west, particle, theta_max);
+        vector_t f2 = quad_force(tree->north_east, particle, theta_max);
+        vector_t f3 = quad_force(tree->south_west, particle, theta_max);
+        vector_t f4 = quad_force(tree->south_east, particle, theta_max);
+        f.x = f1.x + f2.x + f3.x + f4.x;
+        f.y = f1.y + f2.y + f3.y + f4.y;
+    }
+    return f;
+}
+}
+\end{lstlisting}
+\newpage
+\begin{center}
+    Pthread code
+\end{center}
+\begin{lstlisting}{language=C}
+    typedef struct quad_force_args {
+    quadtree_t* tree;
+    particle_t* particles;
+    double theta_max;
+    vector_t* forces;
+    int start;
+    int stop;
+} quad_force_args_t;
+
+    void* quad_force_wrapper(void* argument) {
+    quad_force_args_t* args  = argument;
+
+    for(int i = args->start; i < args->stop; i++) {
+        args->forces[i] = quad_force(args->tree, args->particles[i], args->theta_max);
+    }
+
+    return NULL;
+}
+//==========================================================================
+void compute_quad_forces(vector_t* forces, quadtree_t* tree,
+                particle_t* particles, int N, double theta_max, int nthreads) {
+
+    pthread_t* thread_ptr = malloc(nthreads*sizeof(pthread_t));
+    quad_force_args_t* args = malloc(nthreads*sizeof(quad_force_args_t));
+
+    for(int i = 0; i < nthreads; i++) {
+        args[i].tree = tree;
+        args[i].particles = particles;
+        args[i].theta_max = theta_max;
+        args[i].forces = forces;
+        args[i].start = (i * N) / nthreads;
+        args[i].stop = ((i + 1)*N) / nthreads;
+        pthread_create(&thread_ptr[i], NULL, quad_force_wrapper, &args[i]);
+    }
+
+    for(int i = 0; i < nthreads; i++) {
+        pthread_join(thread_ptr[i], NULL);
+    }
+}
+\end{lstlisting}
+

@@ -1,0 +1,87 @@
+\usepackage{pgfplots}
+\pgfplotsset{compat=newest}
+\usepackage{pgfplotstable}
+\usepackage{media9}
+\usepackage{amsmath}
+\usepackage{booktabs}
+\usepackage{enumitem}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage{amssymb}
+\usepackage{geometry}
+\usepackage{physics}
+\usepackage{listings}
+\usepackage{lmodern}
+\usepackage{float}
+\usepackage{eso-pic}
+\usepackage{lipsum}
+\usepackage{comment}
+\usepackage{balance}
+\usepackage{lscape}
+\usepackage{color}
+\usepackage{caption}
+\usepackage{subcaption}
+
+\newcommand{\n}{\newline}
+\newcommand{\np}{\newpage}
+\newcommand{\nn}{\newline \newline}
+\newcommand{\timeofm}{$\mathcal{T}$}
+\newcommand\tab[1][1cm]{\hspace*{#1}}
+\newcommand{\Cross}{$\mathbin{\tikz [x=1.4ex,y=1.4ex,line width=.2ex, red] \draw (0,0) -- (1,1) (0,1) -- (1,0);}$}
+\newcommand{\Checkmark}{$\color{black}\checkmark$}
+
+\floatplacement{figure}{H}
+\geometry{left=2.5cm,right=2.5cm,top=2.5cm,bottom=2.5cm}
+
+\title{
+	\includegraphics[width=0.5\textwidth]{../images/UU_logo.jpg}\\[1em]
+	High Performance Programming \\[1em]
+	Assignment 3 \\[3em]
+	Group 29
+	\author{Kieran Barber, Panagiotis Papias}
+}
+
+\definecolor{mygreen}{RGB}{28,172,0}
+\definecolor{mylilas}{RGB}{170,55,241}
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+\definecolor{carrotorange}{rgb}{0.93, 0.57, 0.13}
+\definecolor{dkorange}{RGB}{204,118,0}
+\definecolor{yellow}{RGB}{255,188,0}
+\definecolor{turq}{RGB}{0,204,204}
+\definecolor{struct}{RGB}{51,255,153}
+\definecolor{var}{RGB}{0,255,255}
+
+\lstset{language=C,
+    frame=tb,
+    backgroundcolor=\color{white},
+    commentstyle=\color{dkgreen},
+    keywordstyle=\color{dkorange},
+    numbers=none,
+    stringstyle=\color{dkorange},
+    basicstyle=\small\ttfamily,
+    emph={norm3, force, r_vector, total_force, compute_forces, theta_bounds, compute_quad_forces, omp, parallel, quad_force, quadtree_add_particle, pthread_join, pthread_create, malloc, vector_in_box, quad_force_wrapper},
+    emphstyle={\color{blue}},
+    escapechar=\%,
+    classoffset=1,
+    otherkeywords={vector_t, particle_t, quadtree_t, box_bounds_t, pthread_t, quad_force_args_t},
+    morekeywords={vector_t, particle_t, quadtree_t, box_bounds_t, pthread_t, quad_force_args_t},
+    keywordstyle=\color{struct},
+    classoffset=0,
+    classoffset=2,
+    otherkeywords={pragma},
+    morekeywords={pragma},
+    keywordstyle=\color{dkorange},
+    classoffset=0,
+    breakatwhitespace=false,
+    breaklines=true,
+    captionpos=b,
+    keepspaces=true,
+    numbersep=5pt,
+    showspaces=false,
+    showstringspaces=false,
+    showtabs=false,
+    tabsize=2,
+}

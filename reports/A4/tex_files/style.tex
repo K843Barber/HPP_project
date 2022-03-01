@@ -1,0 +1,78 @@
+\usepackage{listings}
+\usepackage{color}
+\usepackage{booktabs}
+\usepackage{pgfplots}
+\usepackage{pgfplotstable}
+\pgfplotsset{compat=newest}
+\usepackage{media9}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{float}
+\usepackage{physics}
+\usepackage[colorlinks=true, linkcolor=blue]{hyperref}
+\usepackage[english]{babel}
+\selectlanguage{english}
+\usepackage[utf8]{inputenc}
+\usepackage{subfig}
+\usepackage{afterpage}
+\pagestyle{plain}
+\usepackage[export]{adjustbox}
+\usepackage{here}
+\usepackage{ragged2e}
+
+\definecolor{mygreen}{RGB}{28,172,0}
+\definecolor{mylilas}{RGB}{170,55,241}
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+\definecolor{carrotorange}{rgb}{0.93, 0.57, 0.13}
+\definecolor{dkorange}{RGB}{204,118,0}
+\definecolor{yellow}{RGB}{255,188,0}
+\definecolor{turq}{RGB}{0,204,204}
+\definecolor{struct}{RGB}{51,255,153}
+\definecolor{var}{RGB}{0,255,255}
+
+\lstset{language=C,
+    frame=tb,
+    backgroundcolor=\color{white},
+    commentstyle=\color{dkgreen},
+    keywordstyle=\color{dkorange},
+    numbers=none,
+    stringstyle=\color{dkorange},
+    basicstyle=\small\ttfamily,
+    emph={norm3, force, r_vector, total_force, compute_forces, theta_bounds, compute_quad_forces, omp, parallel, quad_force, quadtree_add_particle, pthread_join, pthread_create, malloc, vector_in_box, quad_force_wrapper},
+    emphstyle={\color{blue}},
+    escapechar=\%,
+    classoffset=1,
+    otherkeywords={vector_t, particle_t, quadtree_t, box_bounds_t, pthread_t, quad_force_args_t},
+    morekeywords={vector_t, particle_t, quadtree_t, box_bounds_t, pthread_t, quad_force_args_t},
+    keywordstyle=\color{struct},
+    classoffset=0,
+    classoffset=2,
+    otherkeywords={pragma},
+    morekeywords={pragma},
+    keywordstyle=\color{dkorange},
+    classoffset=0,
+    breakatwhitespace=false,
+    breaklines=true,
+    captionpos=b,
+    keepspaces=true,
+    numbersep=5pt,
+    showspaces=false,
+    showstringspaces=false,
+    showtabs=false,
+    tabsize=2,
+}
+
+\textheight=21cm
+\textwidth=17cm
+\oddsidemargin=0cm
+\parindent=0mm
+\pagestyle{plain}
+
+\global\let\date\relax
+\newcounter{unomenos}
+\setcounter{unomenos}{\number\year}
+\addtocounter{unomenos}{-1}
+\stepcounter{unomenos}
+\gdef\@date{ Course \arabic{unomenos}}

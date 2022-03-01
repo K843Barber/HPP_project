@@ -1,0 +1,64 @@
+\usepackage{listings}
+\usepackage{color}
+\usepackage{booktabs}
+\usepackage{pgfplots}
+\usepackage{pgfplotstable}
+\pgfplotsset{compat=newest}
+\usepackage{media9}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{float}
+\usepackage{physics}
+\usepackage[colorlinks=true, linkcolor=blue]{hyperref}
+\usepackage[english]{babel}
+\selectlanguage{english}
+\usepackage[utf8]{inputenc}
+\usepackage{subfig}
+\usepackage{afterpage}
+\pagestyle{plain}
+\usepackage{here}
+\usepackage{color}
+\usepackage{ragged2e}
+
+
+
+\definecolor{mygreen}{RGB}{28,172,0}
+\definecolor{mylilas}{RGB}{170,55,241}
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+\definecolor{carrotorange}{rgb}{0.93, 0.57, 0.13}
+
+\lstset{language=C,
+    frame=tb,
+    backgroundcolor=\color{white},
+    commentstyle=\color{dkgreen},
+    keywordstyle=\color{blue},
+    numbers=none,
+    stringstyle=\color{carrotorange},
+    basicstyle=\footnotesize,
+    breakatwhitespace=false,
+    breaklines=true,
+    captionpos=b,
+    keepspaces=true,
+    numbersep=5pt,
+    showspaces=false,
+    showstringspaces=false,
+    showtabs=false,
+    tabsize=2,
+    language=C
+}
+
+
+\textheight=21cm
+\textwidth=17cm
+\oddsidemargin=0cm
+\parindent=0mm
+\pagestyle{plain}
+
+\global\let\date\relax
+\newcounter{unomenos}
+\setcounter{unomenos}{\number\year}
+\addtocounter{unomenos}{-1}
+\stepcounter{unomenos}
+\gdef\@date{ Course \arabic{unomenos}}

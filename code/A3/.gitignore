@@ -1,0 +1,7 @@
+galsim
+galsim.o
+compare
+report.pdf
+result.gal
+compare_gal_files.c
+graphics.o

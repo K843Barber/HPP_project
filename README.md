@@ -26,15 +26,16 @@ To run the tex files and build the reports, you can run the following command:
 
 `The time required for the calculation is: 3.427271`
 
-### Command line outputs for assignemtns 4-6
+### Command line outputs for assignments 4-6
 
 Output from computation of A4:
-`./galsim 3000 ../input_data/ellipse_N_03000.gal 100 1e-5 0.01 1`
-`....................................................................................................`
-`quadtime: 0.098491 `
-`forcetime: 35.855026 `
-`The total time required for the calculation is: 37.015067.`
-
+```
+./galsim 3000 ../input_data/ellipse_N_03000.gal 100 1e-5 0.01 1
+....................................................................................................
+quadtime: 0.098491
+forcetime: 35.855026
+The total time required for the calculation is: 37.015067.
+```
 Output from computation of A5 with threads: 1, 2, 4, 8
 ```
 ➜  A5 git:(main) ✗ ./galsim 3000 ../input_data/ellipse_N_03000.gal 100 1e-5 1e-3 1 1
@@ -57,6 +58,9 @@ The total time required for the calculation is: 14.170618.
 
 ➜  A5 git:(main) ✗ ./galsim 3000 ../input_data/ellipse_N_03000.gal 100 1e-5 1e-3 1 8
 ....................................................................................................
+quadtime: 0.117358
+forcetime: 11.448120
+The total time required for the calculation is: 12.797717.
 ```
 Output from computation of A6
 ```

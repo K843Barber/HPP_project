@@ -7,7 +7,7 @@ This repo contains work from a course called High Performance Programming. The g
 To run the code in each folder in the `code` folder, you can simply run 'make time' and this will run the code with different flag optimizers. To see the time for each flag this needs to be manually changed manually in the `Makefile`. Alternatively, if you wish to run your own parameters, then an example of this is as follows:
 `./galsim 1000 ../input_data/ellipse_N_01000.gal 100 1e-5 1`
 
-## TEX
+## REPORTS
 
 A prerequesite to run the command shown below, you need to install pdflatex in the command line with: `sudo apt-get install texlive-latex-base texlive-fonts-recommended texlive-fonts-extra texlive-latex-extra`.
 
@@ -15,4 +15,4 @@ To run the tex files and build the reports, you can run the following command: `
 
 ### Simulation of particle evolution representing stars in a galaxy (Assignment 3)
 
-<img src="https://github.com/K843Barber/HPP_project/blob/main/space.gif" width=600px;>
+<img src="https://github.com/K843Barber/HPP_project/blob/main/space.gif" width=400px;>

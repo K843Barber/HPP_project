@@ -23,11 +23,11 @@ static double get_wall_seconds() {
 void update_particle(particle_t* p, vector_t force, double delta_t) {
     p->velocity.x += delta_t*force.x/p->mass;
     p->velocity.y += delta_t*force.y/p->mass;
-    
+
     p->position.x += delta_t*p->velocity.x;
     p->position.y += delta_t*p->velocity.y;
 }
- 
+
 void update_particles(particle_t* particles, vector_t* forces, int N, double delta_t) {
     for(int i = 0; i < N; i++) {
         update_particle(&particles[i], forces[i], delta_t);
@@ -36,7 +36,7 @@ void update_particles(particle_t* particles, vector_t* forces, int N, double del
 //=================================================================================
 void update_screen(quadtree_t* tree, particle_t* particles, int N) {
     ClearScreen();
-        
+
     for(int i = 0; i < N; i++) {
         draw_particle(particles[i]);
     }
@@ -48,7 +48,7 @@ void update_screen(quadtree_t* tree, particle_t* particles, int N) {
 int main(int argc, char* argv[]) {
 
     if(argc != 8) {
-        printf("Please give 6 arguments: N filename nsteps delta_t theta_max graphics \n");
+        printf("Please give 7 arguments: N filename nsteps delta_t theta_max graphics threads \n");
         return -1;
     }
 
@@ -64,13 +64,13 @@ int main(int argc, char* argv[]) {
     vector_t* forces = malloc(N*sizeof(struct vector));
     quadtree_t* tree = NULL;
 
-    G = 100.0/N;    
+    G = 100.0/N;
 
     if(read_particles(particles, input_file_name, N) != 0) {
         printf("Error reading particles\n");
         return -1;
     }
-    
+
     if(graphics != 0) {
         InitializeGraphics(argv[0], windowWidth, windowWidth);
         SetCAxes(0, 1);
@@ -84,10 +84,10 @@ int main(int argc, char* argv[]) {
         double time2 = get_wall_seconds();
         quadtree_build_tree(&tree, particles, N/*, nthreads*/);
         double time3 = get_wall_seconds();
-        
+
         compute_quad_forces(forces, tree, particles, N, theta_max, nthreads);
         double time4 = get_wall_seconds();
-        
+
         timequad += time3 - time2;
         timeFORCE += time4 - time3;
 

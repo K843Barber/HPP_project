@@ -21,20 +21,21 @@ To run the tex files and build the reports, you can run the following command:
 
 ### Simulation of particle evolution representing stars in a galaxy (Assignment 3)
 <p align="center">
-  <img src="https://github.com/K843Barber/HPP_project/blob/main/space.gif" width=400px;>
+  <img src="https://github.com/K843Barber/HPP_project/blob/main/images/space.gif" width=400px;>
 </p>
 
+`The time required for the calculation is: 3.427271`
 
+### Command line outputs for assignemtns 4-6
 
-The time required for the calculation is: 3.427271
-
-
-Output from computation of A4: `./galsim 3000 ../input_data/ellipse_N_03000.gal 100 1e-5 0.01 1`
+Output from computation of A4:
+`./galsim 3000 ../input_data/ellipse_N_03000.gal 100 1e-5 0.01 1`
 `....................................................................................................`
 `quadtime: 0.098491 `
 `forcetime: 35.855026 `
 `The total time required for the calculation is: 37.015067.`
 
+Output from computation of A5 with threads: 1, 2, 4, 8
 ```
 ➜  A5 git:(main) ✗ ./galsim 3000 ../input_data/ellipse_N_03000.gal 100 1e-5 1e-3 1 1
 ....................................................................................................
@@ -57,10 +58,12 @@ The total time required for the calculation is: 14.170618.
 ➜  A5 git:(main) ✗ ./galsim 3000 ../input_data/ellipse_N_03000.gal 100 1e-5 1e-3 1 8
 ....................................................................................................
 ```
-
+Output from computation of A6
+```
 ➜  A6 git:(main) ✗ ./galsim 3000 ../input_data/ellipse_N_03000.gal 100 1e-5 1e-3 1
 ....................................................................................................
 quadtime: 0.110113
 forcetime: 10.489650
  partytime 2.312356
 The total time required for the calculation is: 14.178464.
+```

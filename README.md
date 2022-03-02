@@ -24,9 +24,11 @@ To run the tex files and build the reports, you can run the following command:
   <img src="https://github.com/K843Barber/HPP_project/blob/main/images/space.gif" width=400px;>
 </p>
 
-`The time required for the calculation is: 3.427271`
+##  Sample Timings
 
-### Command line outputs for assignments 4-6
+### Command line outputs for assignments 3-6
+
+`The time required for the calculation is: 3.427271`
 
 Output from computation of A4:
 ```

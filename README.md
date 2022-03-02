@@ -14,5 +14,6 @@ A prerequesite to run the command shown below, you need to install pdflatex in t
 To run the tex files and build the reports, you can run the following command: `texfot pdflatex -interaction=nonstopmode -output-directory=../report -jobname=report main.tex; bibtex report; texfot pdflatex -interaction=nonstopmode -output-directory=../report -jobname=report main.tex; texfot pdflatex -interaction=nonstopmode -output-directory=../report -jobname=report main.tex`
 
 ### Simulation of particle evolution representing stars in a galaxy (Assignment 3)
-
-<img src="https://github.com/K843Barber/HPP_project/blob/main/space.gif" width=400px; align=center;>
+<p align="center">
+  <img src="https://github.com/K843Barber/HPP_project/blob/main/space.gif" width=400px;>
+</p>

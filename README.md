@@ -28,6 +28,8 @@ To run the tex files and build the reports, you can run the following command:
 
 ### Command line outputs for assignments 3-6
 
+Output from computation of A3:
+
 `The time required for the calculation is: 3.427271`
 
 Output from computation of A4:

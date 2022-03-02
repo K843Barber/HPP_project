@@ -9,9 +9,15 @@ To run the code in each folder in the `code` folder, you can simply run 'make ti
 
 ## REPORTS
 
-A prerequesite to run the command shown below, you need to install pdflatex in the command line with: `sudo apt-get install texlive-latex-base texlive-fonts-recommended texlive-fonts-extra texlive-latex-extra`.
+A prerequesite to run the command shown below, you need to install pdflatex in the command line with:
 
-To run the tex files and build the reports, you can run the following command: `texfot pdflatex -interaction=nonstopmode -output-directory=../report -jobname=report main.tex; bibtex report; texfot pdflatex -interaction=nonstopmode -output-directory=../report -jobname=report main.tex; texfot pdflatex -interaction=nonstopmode -output-directory=../report -jobname=report main.tex`
+`sudo apt-get install texlive-latex-base texlive-fonts-recommended texlive-fonts-extra texlive-latex-extra`.
+
+To run the tex files and build the reports, you can run the following command:
+
+`texfot pdflatex -interaction=nonstopmode -output-directory=../report -jobname=report main.tex; bibtex report; texfot pdflatex -interaction=nonstopmode -output-directory=../report -jobname=report main.tex; texfot pdflatex -interaction=nonstopmode -output-directory=../report -jobname=report main.tex`
+
+## SIMULATIONS
 
 ### Simulation of particle evolution representing stars in a galaxy (Assignment 3)
 <p align="center">

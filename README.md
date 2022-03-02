@@ -9,4 +9,4 @@ A prerequesite to run the command shown below, you need to install pdflatex in t
 
 To run the tex files and build the reports, you can run the following command: `texfot pdflatex -interaction=nonstopmode -output-directory=../report -jobname=report main.tex; bibtex report; texfot pdflatex -interaction=nonstopmode -output-directory=../report -jobname=report main.tex; texfot pdflatex -interaction=nonstopmode -output-directory=../report -jobname=report main.tex`
 
-![](https://github.com/K843Barber/HPP_project/blob/main/space.gif)
+![](https://user-images.githubusercontent.com/K843Barber/HPP_project/blob/main/space.gif)

@@ -1,4 +1,5 @@
-# ```diff  - High Performance Programming ```
+# High Performance Programming
+
 This repo contains work from a course called High Performance Programming. The goal was to create a simulation of particles interacting with each other and to make the program as efficient as possible. I have recently reviewed the report and updated with some stylistic additions.
 
 ## CODE
@@ -22,6 +23,3 @@ To run the tex files and build the reports, you can run the following command:
 <p align="center">
   <img src="https://github.com/K843Barber/HPP_project/blob/main/space.gif" width=400px;>
 </p>
-
-
-- ![#f03c15](https://via.placeholder.com/150/f03c15/000000?text=lacolour) `#c5f015`

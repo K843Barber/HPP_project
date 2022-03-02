@@ -15,4 +15,4 @@ To run the tex files and build the reports, you can run the following command: `
 
 ### Simulation of particle evolution representing stars in a galaxy (Assignment 3)
 
-<img src="https://github.com/K843Barber/HPP_project/blob/main/space.gif" width=400px;>
+<img src="https://github.com/K843Barber/HPP_project/blob/main/space.gif" width=400px; align=center;>
